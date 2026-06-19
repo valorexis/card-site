@@ -24,12 +24,10 @@ async function getCardRushPrice(url: string) {
   }
 }
 async function getHareruyaPrice(url: string) {
-  try {
-    return "取得準備中";
-  } catch {
-    return "取得失敗";
-  }
+  return "未実装";
 }
+
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
