@@ -41,7 +41,7 @@ export async function GET(request: Request) {
   }
 
   const cardrush = await getCardRushPrice(url);
-const hareruya = await getHareruyaPrice;
+const hareruya = await getHareruyaPrice(url);
 const dragonstar = "未実装";
 
 
