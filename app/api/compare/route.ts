@@ -23,7 +23,9 @@ async function getCardRushPrice(url: string) {
     return "取得失敗";
   }
 }
-
+async function getHareruyaPrice(url: string) {
+  return "未実装";
+}
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
@@ -39,11 +41,35 @@ export async function GET(request: Request) {
   }
 
   const cardrush = await getCardRushPrice(url);
+const hareruya = await getHareruyaPrice;
+const dragonstar = "未実装";
 
-  return NextResponse.json({
-    cardrush,
-    hareruya: "未実装",
-    dragonstar: "未実装",
-    targetUrl: url,
-  });
+
+const prices = [
+  { shop: "カードラッシュ", price: cardrush },
+  { shop: "晴れる屋", price: hareruya },
+  { shop: "ドラゴンスター", price: dragonstar },
+];
+
+const validPrices = prices
+  .map((item) => ({
+    ...item,
+   number: Number(String(item.price).replace(/[^0-9]/g, "")),
+  }))
+  .filter((item) => item.number > 0);
+
+const cheapest =
+  validPrices.length > 0
+    ? validPrices.sort((a, b) => a.number - b.number)[0]
+    : null;
+
+return NextResponse.json({
+  cardrush,
+  hareruya,
+  dragonstar,
+
+  cheapest,
+
+  targetUrl: url,
+});
 }

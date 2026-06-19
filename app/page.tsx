@@ -46,6 +46,7 @@ alert(
   `カードラッシュ: ${json.cardrush}\n` +
   `晴れる屋: ${json.hareruya}\n` +
   `ドラゴンスター: ${json.dragonstar}\n\n` +
+  `最安値: ${json.cheapest ? json.cheapest.shop + " " + json.cheapest.price : "判定できません"}\n\n` +
   `URL: ${json.targetUrl}`
 );
 };
